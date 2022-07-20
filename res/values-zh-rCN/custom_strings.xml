@@ -79,4 +79,9 @@
     <string name="high_touch_polling_rate_summary">提高屏幕的触控采样率</string>
     <string name="screen_off_fod_title">息屏指纹</string>
     <string name="screen_off_fod_summary">当屏幕关闭时，保持屏下指纹启用</string>
+    <string name="color_mode_balance_category">色彩平衡</string>
+    <string name="color_mode_balance_red">红色强度</string>
+    <string name="color_mode_balance_green">绿色强度</string>
+    <string name="color_mode_balance_blue">蓝色强度</string>
+    <string name="keywords_color_balance">色彩、色彩平衡、色彩校正、红、绿、蓝、LiveDisplay</string>
 </resources>

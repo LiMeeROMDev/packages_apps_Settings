@@ -84,4 +84,6 @@
     <string name="color_mode_balance_green">綠色增強</string>
     <string name="color_mode_balance_blue">藍色增強</string>
     <string name="keywords_color_balance">色彩、色彩平衡、色彩校正、紅、綠、藍、LiveDisplay</string>
+    <string name="three_finger_gesture">滑動截圖</string>
+    <string name="three_finger_gesture_summary">三指下滑截圖</string>
 </resources>

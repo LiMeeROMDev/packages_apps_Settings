@@ -84,4 +84,6 @@
     <string name="color_mode_balance_green">绿色强度</string>
     <string name="color_mode_balance_blue">蓝色强度</string>
     <string name="keywords_color_balance">色彩、色彩平衡、色彩校正、红、绿、蓝、LiveDisplay</string>
+    <string name="three_finger_gesture">滑动截屏</string>
+    <string name="three_finger_gesture_summary">三指同时下滑以截取屏幕内容</string>
 </resources>

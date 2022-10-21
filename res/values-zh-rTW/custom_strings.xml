@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="color_mode_balance_category">色彩平衡</string>
+    <string name="color_mode_balance_red">紅色增強</string>
+    <string name="color_mode_balance_green">綠色增強</string>
+    <string name="color_mode_balance_blue">藍色增強</string>
+    <string name="keywords_color_balance">色彩、色彩平衡、色彩校正、紅、綠、藍、LiveDisplay</string>
+</resources>

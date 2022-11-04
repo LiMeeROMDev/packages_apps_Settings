@@ -119,4 +119,8 @@
     <string name="color_mode_balance_blue">Blue strength</string>
     <string name="keywords_color_balance">color, color balance, color correction, red, green, blue, LiveDisplay</string>
 
+    <!-- VPN icon -->
+    <string name="vpn_icon_title">Hide VPN state</string>
+    <string name="vpn_icon_summary">Hide the VPN state in the status bar and at the bottom of the control center to prevent others from finding out that you are using a VPN through screenshots or other means.</string>
+
 </resources>

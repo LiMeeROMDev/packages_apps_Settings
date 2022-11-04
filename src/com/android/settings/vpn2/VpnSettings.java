@@ -40,6 +40,7 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.provider.Settings;
 import android.security.Credentials;
 import android.security.LegacyVpnProfileStore;
 import android.util.ArrayMap;
@@ -52,6 +53,7 @@ import android.view.MenuItem;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
+import androidx.preference.TwoStatePreference;
 
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.net.LegacyVpnInfo;
@@ -77,7 +79,9 @@ import java.util.Set;
  * are shown in the same list.
  */
 public class VpnSettings extends RestrictedSettingsFragment implements
-        Handler.Callback, Preference.OnPreferenceClickListener {
+        Handler.Callback,
+        Preference.OnPreferenceClickListener,
+        Preference.OnPreferenceChangeListener {
     private static final String LOG_TAG = "VpnSettings";
 
     private static final int RESCAN_MESSAGE = 0;
@@ -103,6 +107,8 @@ public class VpnSettings extends RestrictedSettingsFragment implements
 
     private boolean mUnavailable;
 
+    private Preference mShowVPNIconToggle;
+
     public VpnSettings() {
         super(UserManager.DISALLOW_CONFIG_VPN);
     }
@@ -124,6 +130,19 @@ public class VpnSettings extends RestrictedSettingsFragment implements
         setHasOptionsMenu(!mUnavailable);
 
         addPreferencesFromResource(R.xml.vpn_settings2);
+
+        mShowVPNIconToggle = (Preference) findPreference("vpn_icon");
+
+        // Set default state of VPN icon toggle
+        ((TwoStatePreference) mShowVPNIconToggle).setChecked(
+            Settings.Secure.getIntForUser(
+                getContext().getContentResolver(),
+                Settings.Secure.STATUS_BAR_HIDE_VPN_ICON,
+                0,
+                UserHandle.USER_CURRENT) == 1
+        );
+
+        mShowVPNIconToggle.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -362,6 +381,8 @@ public class VpnSettings extends RestrictedSettingsFragment implements
         for (Preference pref : updates) {
             vpnGroup.addPreference(pref);
         }
+
+        vpnGroup.addPreference(mShowVPNIconToggle);
     }
 
     @Override
@@ -403,6 +424,17 @@ public class VpnSettings extends RestrictedSettingsFragment implements
             // Already connected or no launch intent available - show an info dialog
             PackageInfo pkgInfo = pref.getPackageInfo();
             AppDialogFragment.show(this, pkgInfo, pref.getLabel(), false /* editing */, connected);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if(preference.getKey().equals("vpn_icon")) {
+            Settings.Secure.putIntForUser(getContext().getContentResolver(),
+                Settings.Secure.STATUS_BAR_HIDE_VPN_ICON,
+                (boolean) newValue ? 1 : 0, UserHandle.USER_CURRENT);
             return true;
         }
         return false;

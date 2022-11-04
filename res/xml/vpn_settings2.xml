@@ -16,4 +16,12 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/vpn_title">
+
+    <!-- Show VPN icon in status bar -->
+    <SwitchPreference
+        android:key="vpn_icon"
+        android:title="@string/vpn_icon_title"
+        android:summary="@string/vpn_icon_summary"
+        android:order="-100"/>
+
 </PreferenceScreen>

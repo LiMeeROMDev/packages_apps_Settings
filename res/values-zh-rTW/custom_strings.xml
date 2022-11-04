@@ -5,4 +5,6 @@
     <string name="color_mode_balance_green">綠色增強</string>
     <string name="color_mode_balance_blue">藍色增強</string>
     <string name="keywords_color_balance">色彩、色彩平衡、色彩校正、紅、綠、藍、LiveDisplay</string>
+    <string name="vpn_icon_title">隱藏 VPN 狀態</string>
+    <string name="vpn_icon_summary">在狀態欄和控制中心底部隱藏 VPN 已連接的提示，防止其他人通過截圖或其他方式察覺到您使用了 VPN</string>
 </resources>
